@@ -100,7 +100,7 @@ struct rtp_header {
 	}
 };
 
-bool discord_voice_client::sodium_initialised = false;
+// bool discord_voice_client::sodium_initialised = false; // ggjorven changed
 
 bool discord_voice_client::voice_payload::operator<(const voice_payload& other) const {
 	if (timestamp != other.timestamp) {

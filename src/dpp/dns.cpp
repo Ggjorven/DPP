@@ -25,6 +25,8 @@
 #include <exception>
 #include <cstring>
 #include <mutex>
+#include <locale>
+#include <codecvt>
 #include <shared_mutex>
 #include <dpp/exception.h>
 
@@ -87,7 +89,8 @@ namespace dpp
 			 * The -20 makes sure the error codes dont conflict with codes given in the rest of the list
 			 * Because C libraries love to use -1 and below directly as conflicting error codes.
 			 */
-			throw dpp::connection_exception((exception_error_code)(error - 20), std::string("getaddrinfo error: ") + gai_strerror(error));
+			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter; // ggjorven changed
+			throw dpp::connection_exception((exception_error_code)(error - 20), std::string("getaddrinfo error: ") + converter.to_bytes(gai_strerror(error)));
 		}
 
 		/* Thread safety scope */

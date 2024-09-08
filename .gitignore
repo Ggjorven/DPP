@@ -31,3 +31,15 @@ config.json
 compile_commands.json
 src/dpp/dpp.rc
 .DS_STORE
+
+# Visual Studio ignores
+**.sln
+
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+# Other
+make
+**.make
+Makefile

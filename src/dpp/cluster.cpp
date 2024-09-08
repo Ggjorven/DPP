@@ -71,10 +71,10 @@ bool validate_configuration() {
 	if constexpr (BuildType != build_type::universal && BuildType != expected) {
 		MessageBox(
 			nullptr,
-			"Mismatched Debug/Release configurations between project and dpp.dll.\n"
-			"Please ensure both your program and the D++ DLL file are both using the same configuration.\n"
-			"The program will now terminate.",
-			"D++ Debug/Release mismatch",
+			L"Mismatched Debug/Release configurations between project and dpp.dll.\n"
+			L"Please ensure both your program and the D++ DLL file are both using the same configuration.\n" // ggjorven added
+			L"The program will now terminate.",
+			L"D++ Debug/Release mismatch",
 			MB_OK | MB_ICONERROR
 		);
 		/* Use std::runtime_rror here because dpp exceptions use std::string and that would crash when catching, because of ABI */
